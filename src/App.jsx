@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import * as Sentry from '@sentry/react'
 
 function App() {
   return (
@@ -9,4 +10,6 @@ function App() {
   )
 }
 
-export default App
+export default Sentry.withErrorBoundary(App, {
+  fallback: <div>오류가 발생했습니다. 잠시 후 다시 시도해주세요.</div>,
+})
